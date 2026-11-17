@@ -27,7 +27,7 @@
         // Подія: рахунок зменшився до мінімуму
         public event EventHandler<BalanceEventArgs>? BalanceLow;
 
-        public MobileCommunications(decimal startBalance, decimal minBalance = 10, decimal pricePerMinute = 2)
+        public MobileCommunications(decimal startBalance, decimal minBalance = 50, decimal pricePerMinute = 2)
         {
             balance = startBalance;
             this.minBalance = minBalance;

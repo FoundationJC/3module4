@@ -24,10 +24,12 @@ namespace ConsoleApp3
             // Анонімний метод
             DiagonalDelegate anon = delegate (int[,] m)
             {
+                matrix[0, 0] = 100;
+                
                 int n = Math.Min(m.GetLength(0), m.GetLength(1));
                 int[] result = new int[n];
                 for (int i = 0; i < n; i++)
-                    result[i] = m[i, i];
+                    result[i] = m[i, n - 1 - i];
                 return result;
             };
 
@@ -37,7 +39,7 @@ namespace ConsoleApp3
                 int n = Math.Min(m.GetLength(0), m.GetLength(1));
                 int[] result = new int[n];
                 for (int i = 0; i < n; i++)
-                    result[i] = m[i, i];
+                    result[i] = m[i, n - 1 - i];
                 return result;
             };
 
@@ -49,6 +51,8 @@ namespace ConsoleApp3
             MobileCommunications phone = new MobileCommunications(startBalance: 100);
 
             phone.BalanceLow += Phone_BalanceLow;   // підписка
+
+            phone.BalanceLow += (s, e) => Console.WriteLine("Лог");
 
             phone.ActivatePackage("Інтернет+", 30);
             Console.WriteLine(phone.GetStatus());
